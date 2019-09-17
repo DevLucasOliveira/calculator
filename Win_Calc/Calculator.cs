@@ -58,9 +58,17 @@ namespace Win_Calc
                     tbxScreen.Text = mp.ToString();
                     break;
                 case "÷":
-                    dv = obj4.Div((first), (second));
-                    tbxScreen.Text = dv.ToString();
-                    break;
+                    if (second != 0)
+                    {
+                        dv = obj4.Div((first), (second));
+                        tbxScreen.Text = dv.ToString();
+                        break;
+                    }
+                    else
+                    {
+                        tbxScreen.Text = "ERROR";
+                        break;
+                    }
                 default:
                     break;
             }
