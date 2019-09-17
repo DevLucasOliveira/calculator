@@ -1,6 +1,6 @@
 # Calculator 
 
-###### Hey there! I developed this project using C# language to get knowledge personal.
+###### Hey there! I developed this project using C# language to get personal knowledge.
 
 Simple Calculator with the following features: 
 
