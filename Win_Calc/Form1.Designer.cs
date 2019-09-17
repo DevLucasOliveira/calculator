@@ -179,6 +179,7 @@
             this.button11.TabIndex = 12;
             this.button11.Text = "+";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.operator_click);
             // 
             // button13
             // 
@@ -189,6 +190,7 @@
             this.button13.TabIndex = 13;
             this.button13.Text = "x";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.operator_click);
             // 
             // button14
             // 
@@ -199,6 +201,7 @@
             this.button14.TabIndex = 14;
             this.button14.Text = "-";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.operator_click);
             // 
             // button15
             // 
@@ -209,6 +212,7 @@
             this.button15.TabIndex = 15;
             this.button15.Text = "÷";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.operator_click);
             // 
             // button16
             // 
@@ -219,6 +223,7 @@
             this.button16.TabIndex = 16;
             this.button16.Text = "=";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.Button16_Click);
             // 
             // button17
             // 
@@ -230,6 +235,7 @@
             this.button17.TabIndex = 17;
             this.button17.Text = "CE";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.Button17_Click);
             // 
             // button18
             // 
@@ -241,6 +247,7 @@
             this.button18.TabIndex = 18;
             this.button18.Text = "C";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.Button18_Click);
             // 
             // result
             // 
@@ -281,7 +288,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
