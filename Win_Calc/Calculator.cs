@@ -53,11 +53,11 @@ namespace Win_Calc
                     sb = obj2.Sub((first), (second));
                     tbxScreen.Text = sb.ToString();
                     break;
-                case "*":
+                case "x":
                     mp = obj3.Mpy((first), (second));
                     tbxScreen.Text = mp.ToString();
                     break;
-                case "/":
+                case "÷":
                     dv = obj4.Div((first), (second));
                     tbxScreen.Text = dv.ToString();
                     break;
@@ -72,17 +72,17 @@ namespace Win_Calc
         //Action for Delete one for one
         private void btnDelete_click(object sender, EventArgs e)
         {
-            if (tbxScreen.Text.Length == 1)
-                tbxScreen.Text = "";
-            else
+            if (tbxScreen.Text.Length > 1)
                 tbxScreen.Text = tbxScreen.Text.Substring(0, tbxScreen.Text.Length - 1);
+            else
+                tbxScreen.Clear();
         }
 
         //Functions of the operators
         private void operatorDiv_click(object sender, EventArgs e)
         {
             click = true;
-            operation = "/";
+            operation = "÷";
             first = double.Parse(tbxScreen.Text);
             tbxScreen.Clear();
             equation.Text = first + " " + operation;
@@ -91,7 +91,7 @@ namespace Win_Calc
         private void operatorMpy_click(object sender, EventArgs e)
         {
             click = true;
-            operation = "*";
+            operation = "x";
             first = double.Parse(tbxScreen.Text);
             tbxScreen.Clear();
             equation.Text = first + " " + operation;
