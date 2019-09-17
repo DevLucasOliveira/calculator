@@ -22,9 +22,10 @@ namespace Win_Calc
         }
         private void Button_Click(object sender, EventArgs e)
         {
-            if ((result.Text == "0") || (operation_pressed))
+            if ((result.Text == "0")|| (operation_pressed))
                 result.Clear();
 
+            operation_pressed = false;
             Button b = (Button)sender;
             result.Text = result.Text + b.Text;
         }
@@ -32,6 +33,7 @@ namespace Win_Calc
         private void Button17_Click(object sender, EventArgs e)
         {
             result.Text = "0";
+            equation.Text = "";
         }
 
         private void operator_click(object sender, EventArgs e)
@@ -40,11 +42,13 @@ namespace Win_Calc
             operation = b.Text;
             value = Double.Parse(result.Text);
             operation_pressed = true;
+            equation.Text = value + " " + operation;
 
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
+            equation.Text = "";
             switch (operation)
             {
                 case "+":
@@ -62,13 +66,15 @@ namespace Win_Calc
                 default:
                     break;
             }//end switch
-            operation_pressed = false;
+
+           // equation.Text = value + " " + operation + " " ;
         }
 
         private void Button18_Click(object sender, EventArgs e)
         {
-            result.Clear();
+            result.Text = "0";
             value = 0;
+            equation.Text = "";
         }
     }
 }
