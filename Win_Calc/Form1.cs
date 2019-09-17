@@ -16,15 +16,13 @@ namespace Win_Calc
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
+            if (result.Text == "0")
+                result.Clear();
 
-        }
-
-        private void Button7_Click(object sender, EventArgs e)
-        {
-            result.Text = result.Text + "1";
+            Button b = (Button)sender;
+            result.Text = result.Text + b.Text;
         }
     }
 }
