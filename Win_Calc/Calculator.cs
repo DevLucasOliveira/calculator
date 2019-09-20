@@ -42,42 +42,51 @@ namespace Win_Calc
         //Action for expression Result
         private void btnResult_click(object sender, EventArgs we)
         {
-           
-            second = double.Parse(tbxScreen.Text);
 
-            double ad, sb, mp, dv;
-
-            switch(operation){
-                case "+":
-                    ad = obj.Add((first), (second));
-                    tbxScreen.Text = ad.ToString();
-                    break;
-                case "-":
-                    sb = obj2.Sub((first), (second));
-                    tbxScreen.Text = sb.ToString();
-                    break;
-                case "x":
-                    mp = obj3.Mpy((first), (second));
-                    tbxScreen.Text = mp.ToString();
-                    break;
-                case "÷":
-                    if (second != 0)
-                    {
-                        dv = obj4.Div((first), (second));
-                        tbxScreen.Text = dv.ToString();
-                        break;
-                    }
-                    else
-                    {
-                        tbxScreen.Text = "ERROR";
-                        break;
-                    }
-                default:
-                    break;
+            if ((String.IsNullOrEmpty(tbxScreen.Text)) || (tbxScreen.Text == "+")
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ","))
+            {
+                tbxScreen.Clear();
+                equation.Text = "";
             }
-            click = true;
-            equation.Text = "";
-            equation.Text = first + " " + operation+ " " +second;
+            else
+            {
+                second = double.Parse(tbxScreen.Text);
+                double ad, sb, mp, dv;
+
+                switch (operation)
+                {
+                    case "+":
+                        ad = obj.Add((first), (second));
+                        tbxScreen.Text = ad.ToString();
+                        break;
+                    case "-":
+                        sb = obj2.Sub((first), (second));
+                        tbxScreen.Text = sb.ToString();
+                        break;
+                    case "x":
+                        mp = obj3.Mpy((first), (second));
+                        tbxScreen.Text = mp.ToString();
+                        break;
+                    case "÷":
+                        if (second != 0)
+                        {
+                            dv = obj4.Div((first), (second));
+                            tbxScreen.Text = dv.ToString();
+                            break;
+                        }
+                        else
+                        {
+                            tbxScreen.Text = "ERROR";
+                            break;
+                        }
+                    default:
+                        break;
+                }
+                click = true;
+                equation.Text = "";
+                equation.Text = first + " " + operation + " " + second;
+            }
         }
 
 
@@ -96,8 +105,7 @@ namespace Win_Calc
         {
             click = true;
             operation = "÷";
-            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
+            if (Validate(tbxScreen.Text))
             {
                 tbxScreen.Clear();
                 equation.Text = "";
@@ -114,8 +122,7 @@ namespace Win_Calc
         {
             click = true;
             operation = "x";
-            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
+            if (Validate(tbxScreen.Text))
             {
                 tbxScreen.Clear();
                 equation.Text =  "";
@@ -132,8 +139,7 @@ namespace Win_Calc
         {
             click = true;
             operation = "-";
-            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
+            if (Validate(tbxScreen.Text))
             {
                 tbxScreen.Clear();
                 tbxScreen.Text = tbxScreen.Text + "-";
@@ -152,8 +158,7 @@ namespace Win_Calc
         {
             click = true;
             operation = "+";
-            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
+            if (Validate(tbxScreen.Text))
             {
                 tbxScreen.Clear();
                 tbxScreen.Text = tbxScreen.Text + "+";
@@ -166,6 +171,25 @@ namespace Win_Calc
                 tbxScreen.Clear();
                 equation.Text = first + " " + operation;
             }
+        }
+
+
+        //POO
+        public bool Validate(string value)
+        {
+            switch(value){
+                case (null):
+                case (""):
+                case ("0"):
+                case ("+"):
+                case ("-"):
+                case ("x"):
+                case (","):
+                case ("ERROR"):
+                    return true;
+            }
+
+            return false;
         }
 
 
