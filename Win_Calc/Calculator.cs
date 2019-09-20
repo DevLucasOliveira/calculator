@@ -40,6 +40,7 @@ namespace Win_Calc
         //Action for expression Result
         private void btnResult_click(object sender, EventArgs we)
         {
+           
             second = double.Parse(tbxScreen.Text);
 
             double ad, sb, mp, dv;
@@ -72,7 +73,7 @@ namespace Win_Calc
                 default:
                     break;
             }
-            click = false;
+            click = true;
             equation.Text = "";
             equation.Text = first + " " + operation+ " " +second;
         }
@@ -91,36 +92,76 @@ namespace Win_Calc
         {
             click = true;
             operation = "÷";
-            first = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
-            equation.Text = first + " " + operation;
+            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+            {
+                tbxScreen.Clear();
+                equation.Text = "";
+            }
+            else
+            {
+                first = double.Parse(tbxScreen.Text);
+                tbxScreen.Clear();
+                equation.Text = first + " " + operation;
+            }
         }
 
         private void operatorMpy_click(object sender, EventArgs e)
         {
             click = true;
             operation = "x";
-            first = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
-            equation.Text = first + " " + operation;
+            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+            {
+                tbxScreen.Clear();
+                equation.Text =  "";
+            }
+            else
+            {
+                first = double.Parse(tbxScreen.Text);
+                tbxScreen.Clear();
+                equation.Text = first + " " + operation;
+            }
         }
 
         private void operatorSub_click(object sender, EventArgs e)
         {
             click = true;
             operation = "-";
-            first = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
-            equation.Text = first + " " + operation;
+            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+            {
+                tbxScreen.Clear();
+                tbxScreen.Text = tbxScreen.Text + "-";
+                equation.Text = operation;
+                click = false;
+            }
+            else
+            {
+                first = double.Parse(tbxScreen.Text);
+                tbxScreen.Clear();
+                equation.Text = first + " " + operation;
+            }
         }
 
         private void operatorAdd_click(object sender, EventArgs e)
         {
             click = true;
             operation = "+";
-            first = double.Parse(tbxScreen.Text);
-            tbxScreen.Clear();
-            equation.Text = first + " " + operation;
+            if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+            {
+                tbxScreen.Clear();
+                tbxScreen.Text = tbxScreen.Text + "+";
+                equation.Text = operation;
+                click = false;
+            }
+            else
+            {
+                first = double.Parse(tbxScreen.Text);
+                tbxScreen.Clear();
+                equation.Text = first + " " + operation;
+            }
         }
 
 
@@ -135,8 +176,7 @@ namespace Win_Calc
         }
         private void btn1_click(object sender, EventArgs e)
         {
-            tbxScreen.Text = "";
-            if ((tbxScreen.Text == "0") || (click))
+            if (tbxScreen.Text == "0" || (click)) 
                 tbxScreen.Clear();
                 click = false;
             tbxScreen.Text = tbxScreen.Text + "1";
@@ -175,7 +215,7 @@ namespace Win_Calc
         }
 
         private void btn6_click(object sender, EventArgs e)
-        {
+        {   
             if ((tbxScreen.Text == "0") || (click))
                 tbxScreen.Clear();
             click = false;
