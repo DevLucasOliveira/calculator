@@ -30,6 +30,7 @@ namespace Win_Calc
         Class.ClsMpy obj3 = new Class.ClsMpy();
         Class.ClsDiv obj4 = new Class.ClsDiv();
 
+
         //Action for clean
         private void btnClear_click(object sender, EventArgs e)
         {
@@ -37,6 +38,7 @@ namespace Win_Calc
             equation.Text = "";
         }
         
+
         //Action for expression Result
         private void btnResult_click(object sender, EventArgs we)
         {
@@ -78,6 +80,7 @@ namespace Win_Calc
             equation.Text = first + " " + operation+ " " +second;
         }
 
+
         //Action for Delete one for one
         private void btnDelete_click(object sender, EventArgs e)
         {
@@ -87,13 +90,14 @@ namespace Win_Calc
                 tbxScreen.Clear();
         }
 
+
         //Functions of the operators
         private void operatorDiv_click(object sender, EventArgs e)
         {
             click = true;
             operation = "÷";
             if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
             {
                 tbxScreen.Clear();
                 equation.Text = "";
@@ -111,7 +115,7 @@ namespace Win_Calc
             click = true;
             operation = "x";
             if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
             {
                 tbxScreen.Clear();
                 equation.Text =  "";
@@ -129,7 +133,7 @@ namespace Win_Calc
             click = true;
             operation = "-";
             if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
             {
                 tbxScreen.Clear();
                 tbxScreen.Text = tbxScreen.Text + "-";
@@ -149,7 +153,7 @@ namespace Win_Calc
             click = true;
             operation = "+";
             if ((tbxScreen.Text == "0") || (String.IsNullOrEmpty(tbxScreen.Text) || (tbxScreen.Text == "+")
-                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷")))
+                || (tbxScreen.Text == "-") || (tbxScreen.Text == "x") || (tbxScreen.Text == "÷") || (tbxScreen.Text == ",")))
             {
                 tbxScreen.Clear();
                 tbxScreen.Text = tbxScreen.Text + "+";
@@ -163,7 +167,6 @@ namespace Win_Calc
                 equation.Text = first + " " + operation;
             }
         }
-
 
 
         //Action butons
@@ -248,7 +251,10 @@ namespace Win_Calc
 
         private void btnDot_clcik(object sender, EventArgs e)
         {
-            tbxScreen.Text = tbxScreen.Text + ".";
+            if (String.IsNullOrEmpty(tbxScreen.Text))
+                tbxScreen.Clear();
+            else
+                tbxScreen.Text = tbxScreen.Text + ",";
         }
 
         private void Calculator_Load(object sender, EventArgs e)
