@@ -10,10 +10,7 @@ namespace Win_Calc.Class
     {
         public double Sub(double n1, double n2)
         {
-            double s;
-            s = n1 - n2;
-            return s;
+            return (n1 - n2);
         }
-
     }
 }

@@ -10,11 +10,7 @@ namespace Win_Calc.Class
     {
         public double Mpy(double n1, double n2)
         {
-            double m;
-            m = n1 * n2;
-            return m;
+            return(n1 * n2);
         }
-
-
     }
 }

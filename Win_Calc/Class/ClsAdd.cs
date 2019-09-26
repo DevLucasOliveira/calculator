@@ -10,11 +10,7 @@ namespace Win_Calc.Class
     {
         public double Add(double n1, double n2)
         {
-            double a;
-            a = n1 + n2;
-            return a;
+            return (n1 + n2);
         }
-
-
     }
 }
